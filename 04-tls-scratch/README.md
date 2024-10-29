@@ -2,14 +2,6 @@
 
 ## Implementing TLS 1.3 Client from Scratch
 
-> [!Note]
-> You can complete this task in pairs! **But not in larger groups**. Remember to mention your pair. The workload assumes that you have friendly LLMs available, such as ChatGPT, [Phind](https://www.phind.com) or [GitHub Copilot](https://docs.github.com/en/copilot/quickstart). Especially GitHub Copilot is useful for this task, so this is a good chance to try it out.
-
-> [!Note]
-> You can work on this task until the end of the course, if you want to, but it is recommended to do in time.
-
-> You can fully focus on this task to get up to 9 points by doing it carefully. But be warned, getting a maximum grade requires a lot of work. If you want to skip the coding, you have another path with similars goals on task 3 and task 4.
-
 Implementing network protocols correctly can be *hard*. They are typically complex and work in a binary, non-text format.
 This is because of the performance reasons, error correction and the minimized addition of overhead to the total bandwidth usage. They must follow strict standards to be compatible with different hardware and software systems.
 Protocols must be designed to handle arbitrary data and then parse and process them correctly while doing it fast. They must be fault-tolerant if they encounter incorrect data.
@@ -72,18 +64,13 @@ The priority and availability of the cipher suites are pre-defined for the task.
 
 ### Implementation requirements
 
-> [!Important]
-> You should implement *a client*, with minimal working features to complete TLS 1.3 handshake, while also noting the error handling. Or more, if you decide so, to replace other tasks from this week.
-
 Minimal TLS client implementation includes the completion of the handshake process with the following features:
   * Key exchange with X25519 and signatures with EdDSA (Elliptic Curve Diffie-Hellman key exchange using Curve25519 and Edwards-Curve Digital Signature Algorithm based on the same curve).
   * ChaCha20-Poly1305 as a symmetric algorithm and cipher suite.
-  *  In TLS 1.3, the use of certain extensions is mandatory
+  * In TLS 1.3, the use of certain extensions is mandatory
   * Mandatory extensions as specified [here.](https://datatracker.ietf.org/doc/html/rfc8446#section-9.2) The sample Rust project has most of them implemented with `as_bytes` mapper. You can also get a good overview of the extensions required by the client from the visualization of https://tls13.xargs.org.
   * At least `cloudflare.com` and `google.com` support the above ciphers for testing purposes.
   * You can and *should* use Wireshark to debug your implementation.
 
 Note that the protocol follows mostly the *tag-length-value* principle.
 There can be constraints for the size of the tag or length, and **this defines how many bytes the tag or length can take**, while the length itself then defines the number of subsequent bytes.
-
-[The sample project](https://github.com/ouspg/tls13tutorial/) provides the *encoding* part for the above, but not the *decoding* part, other than a couple of partial examples. Decoding means mapping arbitrary binary data to correct data structures. This is the part where the typical security problems arise and you should focus on.
