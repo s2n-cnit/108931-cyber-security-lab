@@ -1,6 +1,4 @@
-# 104781-cyber-security
-
-Source code for exercise of Cyber Security Course (104781).
+# 104781 - Cyber Security - Lab Sessions
 
 ## Exercises
 
