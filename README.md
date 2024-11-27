@@ -3,11 +3,10 @@
 ## Exercises
 
 01. [Firewall using Cisco Packet Tracer](01-firewall-packet_tracer/README.md)
-02. [Firewall with Docker](02-firewall-docker/README.md)
-03. [DNS Tunneling with ELK](03-elk-dns/README.md)
-04. [IPsec using Cisco Packet Tracer](04-ipsec-packet_tracer/README.md)
-05. [SSH using Cisco Packet Tracer](05-ssh-packet_tracer/README.md)
-06. [Implementing TLS 1.3 Client from Scratch](06-tls-scratch/README.md)
+02. [IPsec using Cisco Packet Tracer](02-ipsec-packet_tracer/README.md)
+03. [SSH using Cisco Packet Tracer](03-ssh-packet_tracer/README.md)
+04. [DMZ Configuration using Cisco Packet Tracer](04-dmz_config/README.pdf)
+05. [Traffic Inspection](05-traffic_inspection/README.pdf)
 
 ## Tools
 
