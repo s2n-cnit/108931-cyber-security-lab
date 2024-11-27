@@ -7,6 +7,9 @@
 03. [SSH using Cisco Packet Tracer](03-ssh-packet_tracer/README.md)
 04. [DMZ Configuration using Cisco Packet Tracer](04-dmz_config/README.pdf)
 05. [Traffic Inspection](05-traffic_inspection/README.pdf)
+06. [VLAN + VTP](06-vlan-vtp/README.pdf)
+7.  [CCNA Security](07-ccna-security/README.pdf)
+8.  [Encryption](08-encryption/README.pdf)
 
 ## Tools
 
