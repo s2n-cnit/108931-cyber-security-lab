@@ -6,6 +6,8 @@ This lab setup is going to focus on the technical side for both the offensive an
 
 VMware is a virtualization software where you could deploy and manage these virtual machines, think of it as like building a computer inside a computer.
 
+![SOC Lab — Diagram](soc_lag-diagram.png)
+
 ## What you’ll need
 
 - [VMware Workstation](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
