@@ -1,0 +1,229 @@
+!-------------------------------
+!Configure Basic Router Security
+!-------------------------------
+!R1
+conf t
+security passwords min-length 10
+enable secret ciscoenapa55
+service password-encryption
+line console 0
+password ciscoconpa55
+exec-timeout 15 0
+login
+logging synchronous
+banner motd $Unauthorized access strictly prohibited and prosecuted to the full
+extent of the law!$
+end
+
+!R2
+conf t
+enable secret ciscoenapa55
+line vty 0 4
+password ciscovtypa55
+exec-timeout 15 0
+login
+end
+
+!-------------------------
+!Configure Switch Security
+!-------------------------
+!S1
+conf t
+service password-encryption
+enable secret ciscoenapa55
+line console 0
+password ciscoconpa55
+exec-timeout 5 0
+login
+logging synchronous
+line vty 0 15
+password ciscovtypa55
+exec-timeout 5 0
+login
+banner motd $Unauthorized access strictly prohibited and prosecuted to the full
+extent of the law!$
+end
+
+!Trunking
+!S1 and S2
+conf t
+interface FastEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport nonegotiate
+end
+
+!S1 Port Security
+conf t
+interface FastEthernet 0/6
+switchport mode access
+spanning-tree portfast
+spanning-tree bpduguard enable
+shutdown
+switchport port-security
+switchport port-security mac-address sticky
+no shutdown
+interface range f0/2 – 5 , f0/7 – 24 , g0/1 - 2
+shutdown
+end
+
+!----------------------------------
+!Configure AAA Local Authentication
+!----------------------------------
+!R1
+conf t
+username Admin01 privilege 15 secret Admin01pa55
+aaa new-model
+aaa authentication login default local enable
+end
+
+!-------------------------
+!Configure SSH
+!-------------------------
+!R1
+conf t
+ip domain-name ccnasecurity.com
+crypto key generate rsa
+1024
+ip ssh version 2
+line vty 0 4
+transport input ssh
+end
+
+!----------------------------
+!Secure Against Login Attacks
+!----------------------------
+!R1
+conf t
+login block-for 60 attempts 2 within 30
+login on-failure log
+
+!---------------------------------
+!Configure Site-to-Site IPsec VPNs
+!---------------------------------
+!R1
+conf t
+access-list 101 permit ip 172.20.1.0 0.0.0.255 172.30.3.0 0.0.0.255
+crypto isakmp policy 10
+encryption aes 256
+authentication pre-share
+hash sha
+group 5
+lifetime 3600
+exit
+crypto isakmp key ciscovpnpa55 address 10.20.20.1
+crypto ipsec transform-set VPN-SET esp-aes 256 esp-sha-hmac
+crypto map CMAP 10 ipsec-isakmp
+set peer 10.20.20.1
+set pfs group5
+set transform-set VPN-SET
+match address 101
+exit
+interface S0/0/0
+crypto map CMAP
+end
+
+!R3
+conf t
+access-list 101 permit ip 172.30.3.0 0.0.0.255 172.20.1.0 0.0.0.255
+crypto isakmp policy 10
+encryption aes 256
+authentication pre-share
+hash sha
+group 5
+lifetime 3600
+exit
+crypto isakmp key ciscovpnpa55 address 10.10.10.1
+crypto ipsec transform-set VPN-SET esp-aes 256 esp-sha-hmac
+crypto map CMAP 10 ipsec-isakmp
+set peer 10.10.10.1
+set transform-set VPN-SET
+match address 101
+exit
+interface S0/0/1
+crypto map CMAP
+end
+
+!-----------------------------------
+!Configure Firewall and IPS Settings
+!-----------------------------------
+!R3
+conf t
+!Firewall configs
+zone security IN-ZONE
+zone security OUT-ZONE
+access-list 110 permit ip 172.30.3.0 0.0.0.255 any
+access-list 110 deny ip any any
+class-map type inspect match-all INTERNAL-CLASS-MAP
+match access-group 110
+exit
+policy-map type inspect IN-2-OUT-PMAP
+class type inspect INTERNAL-CLASS-MAP
+inspect
+zone-pair security IN-2-OUT-ZPAIR source IN-ZONE destination OUT-ZONE
+service-policy type inspect IN-2-OUT-PMAP
+exit
+interface g0/1
+zone-member security IN-ZONE
+exit
+interface s0/0/1
+zone-member security OUT-ZONE
+end
+
+!IPS configs
+mkdir ipsdir
+conf t
+ip ips config location flash:ipsdir
+ip ips name IPS-RULE
+ip ips signature-category
+category all
+retired true
+exit
+category ios_ips basic
+retired false
+exit
+<Enter>
+interface s0/0/1
+ip ips IPS-RULE in
+
+!--------------------------------------------------
+!Configure ASA Basic Security and Firewall Settings
+!--------------------------------------------------
+!CCNAS-ASA
+enable
+<Enter>
+conf t
+interface vlan 1
+nameif inside
+security-level 100
+ip address 192.168.10.1 255.255.255.0
+interface vlan 2
+nameif outside
+security-level 0
+no ip address dhcp
+ip address 209.165.200.234 255.255.255.248
+exit
+hostname CCNAS-ASA
+domain-name ccnasecurity.com
+enable password ciscoenapa55
+username admin password adminpa55
+aaa authentication ssh console LOCAL
+ssh 192.168.10.0 255.255.255.0 inside
+ssh 172.30.3.3 255.255.255.255 outside
+ssh timeout 10
+dhcpd address 192.168.10.5-192.168.10.30 inside
+dhcpd enable inside
+route outside 0.0.0.0 0.0.0.0 209.165.200.233
+object network inside-net
+subnet 192.168.10.0 255.255.255.0
+nat (inside,outside) dynamic interface
+exit
+conf t
+class-map inspection_default
+match default-inspection-traffic
+exit
+policy-map global_policy
+class inspection_default
+inspect icmp
+exit
+service-policy global_policy global
