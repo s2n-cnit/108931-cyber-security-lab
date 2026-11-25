@@ -26,6 +26,10 @@ Four supervised sessions (12 hours), in English. Students observe network traffi
 - Instructor solutions are distributed separately. Test labels and generator are included for self-study; instructors should withhold them for blind assessment (see dataset guide).
 - `tests/`: offline automated tests; `.github/workflows/`: CI for those tests.
 
-## Validation and limitations
+## Some Considerations
 
-Offline Python utilities, dataset construction and certificate generation can be checked locally. Live Mininet, nftables, Zeek and Suricata exercises require a Linux VM with installed tools and instructor smoke testing. Synthetic data are educational fixtures, not evidence of real-world IDS accuracy. All activity is limited to this isolated, authorized environment. No institutional affiliation or license is asserted; choose a license and confirm institutional requirements before public distribution.
+- Offline Python utilities
+- Dataset construction and certificate generation can be checked locally.
+- Live Mininet, nftables, Zeek and Suricata exercises require a Linux VM with installed tools and instructor smoke testing.
+- Synthetic data are educational fixtures, not evidence of real-world IDS accuracy.
+- All activity is limited to this isolated, authorized environment.
