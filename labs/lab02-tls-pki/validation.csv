@@ -1,0 +1,6 @@
+scenario,expected,observed,error_or_evidence,remediation
+trusted_CA,accept,,,
+untrusted_CA,reject,,,
+wrong_hostname,reject,,,
+expired_certificate,reject,,,
+unsupported_TLS,reject,,,

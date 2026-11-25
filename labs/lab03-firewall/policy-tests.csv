@@ -1,0 +1,11 @@
+id,source,destination,port,expected,baseline,observed,evidence
+T1,ext,10.0.20.10,443,allow,,,
+T2,ext,10.0.20.10,22,deny,,,
+T3,ext,10.0.30.10,8080,deny,,,
+T4,ext,10.0.40.10,22,deny,,,
+T5,web,10.0.30.10,8080,allow,,,
+T6,web,10.0.30.10,22,deny,,,
+T7,admin,10.0.20.10,22,allow,,,
+T8,admin,10.0.30.10,22,allow,,,
+T9,app,10.0.40.10,22,deny,,,
+T10,app,10.0.20.10,443,deny,,,

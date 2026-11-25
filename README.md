@@ -1,28 +1,31 @@
-# 104781 - Cyber Security - Lab Sessions
+# Cyber Security Laboratories — MSc Internet Engineering
 
-## Exercises
+Four supervised sessions (12 hours), in English. Students observe network traffic, establish trust with TLS, enforce network segmentation, and evaluate intrusion detection. Original lab identifiers 01, 02, 03 and 05 are preserved.
 
-01. [Firewall using Cisco Packet Tracer](01-firewall-packet_tracer/README.md)
-02. [IPsec using Cisco Packet Tracer](02-ipsec-packet_tracer/README.md)
-03. [SSH using Cisco Packet Tracer](03-ssh-packet_tracer/README.md)
-04. [Cisco IOS IPS using Packet Tracer](04-cisco_ios-ips/README.md)
-05. [Skills Integration Challenge](05-skills_int_challenge/README.md)
-06. [Mini Cyber Security Lab](06-mini_ciber_security_lab/README.md)
-07. [Traffic Inspection](07-traffic_inspection/README.pdf)
-08. [DMZ Configuration using Cisco Packet Tracer](08-dmz_config/README.pdf)
-09. [CCNA Security](09-ccna_security/README.pdf)
-10. [Encryption](10-encryption/README.pdf)
-11. [VLAN + VTP](11-vlan_vtp/README.pdf)
+| Session | Topic | Hours | Lab grade |
+|---|---|---:|---:|
+| [01](labs/lab01-traffic-analysis/README.md) | Network traffic analysis | 3 | 25% |
+| [02](labs/lab02-tls-pki/README.md) | TLS and PKI | 3 | 25% |
+| [03](labs/lab03-firewall/README.md) | Firewall and segmentation | 3 | 25% |
+| [05](labs/lab05-intrusion-detection/README.md) | IDS and prevention concepts | 3 | 25% |
 
-## Tools
+## Start here
 
-### Required
+1. Read the [syllabus](docs/syllabus.md), [safety policy](docs/safety.md) and [environment guide](environment/README.md).
+2. Use an instructor-managed Ubuntu 24.04 VM, with 4 vCPU, 8 GB RAM and 40 GB disk recommended. Never run the network experiments on a production host.
+3. Install dependencies and start the isolated topology following the environment guide. The bundled PCAPs can also be analyzed offline without Mininet.
+4. Work through each lab and submit the artifacts described in its manual, using the [report template](docs/report-template.md).
 
-- [Cisco Packet Tracer](https://www.netacad.com/courses/packet-tracer)
-- [Docker](https://www.docker.com)
-- [VMware Workstation](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
+## Repository layout
 
-### Useful
+- `labs/`: student manuals, configuration templates, utilities and exercises.
+- `environment/`: installation, virtual topology, local services and certificate generation.
+- `datasets/`: deterministic synthetic PCAP files and labels; no real user data.
+- `tools/`: dataset generator, experiment statistics and IDS metrics.
+- `docs/`: syllabus, grading, reporting, references and optional practical exam (student brief).
+- Instructor solutions are distributed separately. Test labels and generator are included for self-study; instructors should withhold them for blind assessment (see dataset guide).
+- `tests/`: offline automated tests; `.github/workflows/`: CI for those tests.
 
-- [Visual Studio Code](https://code.visualstudio.com): **best free** source code editor (**IDE**).
-- [JetBrains Fleet](https://www.jetbrains.com/fleet): next-generation IDE.
+## Validation and limitations
+
+Offline Python utilities, dataset construction and certificate generation can be checked locally. Live Mininet, nftables, Zeek and Suricata exercises require a Linux VM with installed tools and instructor smoke testing. Synthetic data are educational fixtures, not evidence of real-world IDS accuracy. All activity is limited to this isolated, authorized environment. No institutional affiliation or license is asserted; choose a license and confirm institutional requirements before public distribution.

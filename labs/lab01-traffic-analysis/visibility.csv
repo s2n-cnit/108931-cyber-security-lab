@@ -1,0 +1,8 @@
+field,http_observation,https_observation,evidence_frame,interpretation
+source_destination_ip,,,,
+ports,,,,
+http_headers,,,,
+application_payload,,,,
+packet_sizes,,,,
+packet_timing,,,,
+server_identity,,,,

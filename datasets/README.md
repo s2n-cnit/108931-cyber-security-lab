@@ -1,0 +1,5 @@
+# Synthetic datasets
+
+All PCAPs are generated locally from deterministic protocol fixtures by `python3 tools/generate_datasets.py`. No real user data, malware or captured Internet traffic. Timestamps and MACs are synthetic. TCP streams have handshakes, request/response and closure; DNS baseline includes one query/reply. Offline baseline does not contain TLS; capture TLS live. The investigation PCAP contains harmless repeated requests and is not labelled as a real attack.
+
+IDS calibration: 50 unique flows; test: 100 unique flows. Separate source-port ranges, deterministic shuffle. Positive label means exact designated HTTP URI, not real intrusion. Benign look-alikes make broad matching imperfect. CSV rows contain directional tuple and binary label. PCAP files use Ethernet link type. Dataset labels are provided for self-study; for blind assessment instructor must withhold test CSV and dataset generator (which reveals construction), keep them private, and replace with unseen variants. Do not use test labels for tuning. The dataset is intentionally simple and cannot support claims about production detection.

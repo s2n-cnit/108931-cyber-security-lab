@@ -1,0 +1,12 @@
+# Complete TODOs before applying; default deny intentionally blocks new connections.
+table inet lab_filter {
+    chain forward {
+        type filter hook forward priority 0; policy drop;
+        ct state invalid counter drop
+        ct state established,related counter accept
+        # TODO: permit ext -> web HTTPS, web -> app TCP 8080,
+        # and admin -> web/app TCP 22. Include zone and address checks.
+        limit rate 5/second log prefix "LAB-DROP: "
+        counter drop
+    }
+}

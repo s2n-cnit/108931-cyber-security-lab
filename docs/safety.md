@@ -1,0 +1,3 @@
+# Authorized laboratory use
+
+Use only the supplied isolated virtual network, synthetic PCAPs and explicitly authorized instructor resources. No public Internet probing, third-party targets, real credentials, malware or live exploitation. The external zone is simulated. Install software before isolating the VM; disconnect its external adapter before experiments. Do not bridge experiment interfaces to campus or home networks. Run privileged tools only in the disposable VM. Do not change the host firewall. Use fake data only; never submit private keys, real credentials or unrelated captures. Stop experiments if isolation fails and notify the instructor. Remove temporary test permissions after measurements. Follow institutional rules and applicable law.

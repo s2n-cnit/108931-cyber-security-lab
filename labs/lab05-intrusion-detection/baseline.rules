@@ -1,0 +1,1 @@
+alert http any any -> 10.0.20.10 any (msg:"LAB5 synthetic marker"; flow:established,to_server; http.uri; content:"/lab5-test-marker"; sid:1000001; rev:1;)
