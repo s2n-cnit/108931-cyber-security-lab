@@ -1,13 +1,13 @@
 # Cyber Security Laboratories — MSc Internet Engineering
 
-Four supervised sessions (12 hours), in English. Students observe network traffic, establish trust with TLS, enforce network segmentation, and evaluate intrusion detection. Original lab identifiers 01, 02, 03 and 05 are preserved.
+Four supervised practical laboratory sessions (12 hours in total), delivered in English. Students observe network traffic, establish trust with TLS, enforce network segmentation, and evaluate intrusion detection. Laboratories are numbered sequentially from 01 to 04.
 
 | Session | Topic | Hours | Lab grade |
 |---|---|---:|---:|
 | [01](labs/lab01-traffic-analysis/README.md) | Network traffic analysis | 3 | 25% |
 | [02](labs/lab02-tls-pki/README.md) | TLS and PKI | 3 | 25% |
 | [03](labs/lab03-firewall/README.md) | Firewall and segmentation | 3 | 25% |
-| [05](labs/lab05-intrusion-detection/README.md) | IDS and prevention concepts | 3 | 25% |
+| [04](labs/lab04-intrusion-detection/README.md) | IDS and prevention concepts | 3 | 25% |
 
 ## Start here
 
@@ -23,13 +23,9 @@ Four supervised sessions (12 hours), in English. Students observe network traffi
 - `datasets/`: deterministic synthetic PCAP files and labels; no real user data.
 - `tools/`: dataset generator, experiment statistics and IDS metrics.
 - `docs/`: syllabus, grading, reporting, references and optional practical exam (student brief).
-- Instructor solutions are distributed separately. Test labels and generator are included for self-study; instructors should withhold them for blind assessment (see dataset guide).
+- `instructor/`: **private teaching material**; do not publish this directory to students. Keep it in a separate restricted repository before pushing student materials. Test labels also need withholding for a blind assessment (see dataset guide).
 - `tests/`: offline automated tests; `.github/workflows/`: CI for those tests.
 
-## Some Considerations
+## Validation and limitations
 
-- Offline Python utilities
-- Dataset construction and certificate generation can be checked locally.
-- Live Mininet, nftables, Zeek and Suricata exercises require a Linux VM with installed tools and instructor smoke testing.
-- Synthetic data are educational fixtures, not evidence of real-world IDS accuracy.
-- All activity is limited to this isolated, authorized environment.
+Offline Python utilities, dataset construction and certificate generation can be checked locally. Live Mininet, nftables, Zeek and Suricata exercises require a Linux VM with installed tools and instructor smoke testing. Synthetic data are educational fixtures, not evidence of real-world IDS accuracy. All activity is limited to this isolated, authorized environment. No institutional affiliation or license is asserted; choose a license and confirm institutional requirements before public distribution.

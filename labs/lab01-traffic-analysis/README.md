@@ -37,5 +37,8 @@ Inspect `conn.log`, `dns.log`, `http.log`, `ssl.log` where generated. Use `zeek-
 ## D. Unknown capture
 Analyze `datasets/pcap/lab01-investigation.pcap` without inspecting instructor solutions. Identify unusual repeated connections, resource requests and metadata. Distinguish indicators from confirmed malicious behavior. Propose a legitimate alternative explanation. Document frame numbers and confidence.
 
+## Lecture-linked application security worksheet (within DNS/HTTP and discussion time)
+Using the synthetic examples in [lecture worksheet](lecture-worksheet.md), identify DNSSEC record roles and interpret email authentication results. Allocate 10 minutes from the DNS/HTTP block and use the provided baseline capture if live setup is slow. Submit short answers as part of protocol interpretation; no additional points or contact time.
+
 ## Submission and rubric
 PCAP and annotated sequences; completed visibility matrix; Zeek logs and summary/plot; unknown PCAP investigation; report (3 pages). Score: capture/filter 20; protocol interpretation 25; HTTP/HTTPS security comparison 20; flow/anomaly analysis 25; documentation 10. Discussion: what metadata remains visible? Does anomaly imply attack? How do flow and packet methods differ? What are passive monitoring limitations?

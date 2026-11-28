@@ -1,6 +1,6 @@
 # Grading and reproducibility
 
-| Criterion | Lab 01 | Lab 02 | Lab 03 | Lab 05 |
+| Criterion | Lab 01 | Lab 02 | Lab 03 | Lab 04 |
 |---|---:|---:|---:|---:|
 | Implementation/configuration | 20 | 45 | 45 | 20 |
 | Protocol/policy/alert analysis | 25 | 20 | 15 | 15 |
@@ -10,7 +10,7 @@
 | Documentation/reproducibility | 10 | 10 | 10 | 10 |
 | Total | 100 | 100 | 100 | 100 |
 
-Detailed rubrics in each lab take precedence. For each criterion award 100% of points for correct, supported and reproducible work; 75% for minor omissions; 50% for partial evidence; 25% for minimal credible progress; 0% for absent or incorrect evidence. Interpolate where justified. Overall lab grade = (G01+G02+G03+G05)/4. Suggested bands: 90–100 excellent, 80–89 very good, 70–79 good, 60–69 satisfactory, 50–59 partial, below 50 insufficient. Official pass threshold is set by the institution.
+Detailed rubrics in each lab take precedence. For each criterion award 100% of points for correct, supported and reproducible work; 75% for minor omissions; 50% for partial evidence; 25% for minimal credible progress; 0% for absent or incorrect evidence. Interpolate where justified. Overall lab grade = (G01+G02+G03+G04)/4. Suggested bands: 90–100 excellent, 80–89 very good, 70–79 good, 60–69 satisfactory, 50–59 partial, below 50 insufficient. Official pass threshold is set by the institution.
 
 ## Experimental standards
 

@@ -1,7 +1,7 @@
 """Deterministic synthetic Ethernet/IPv4/TCP/UDP PCAPs. No external traffic."""
 import argparse,csv,struct,socket,random
 from pathlib import Path
-SRC='10.0.10.10'; DST='10.0.20.10'; MARK='/lab5-test-marker'
+SRC='10.0.10.10'; DST='10.0.20.10'; MARK='/lab4-test-marker'
 def checksum(data):
     if len(data)%2: data+=b'\0'
     s=sum(struct.unpack('!%dH'%(len(data)//2),data))

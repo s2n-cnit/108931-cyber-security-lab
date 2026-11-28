@@ -38,5 +38,8 @@ ext iperf3 -c 10.0.20.10 -t 3 -J > work/throughput.json
 ```
 For timing use repeated TCP connection measurements on an allowed port; for ping temporarily permit ICMP in all configurations and remove it afterward, or explicitly state RTT not measured. Run five throughput repetitions per configuration, using unique files. For logging variant insert a rate-limited log-only rule ahead of the test permit; do not alter permit semantics. Note stateful established rules may bypass logging depending on placement. Track CPU utilization and rule counters, optionally packet loss via controlled UDP test with separate explicit permissions. Degradation = (baseline - firewall)/baseline x 100. Remove temporary rules by handle (`nft -a list chain ...`; `nft delete rule ... handle N`) or reload original policy. Verify policy again. Discuss VM/CPU scheduling and logging limitations.
 
+## Lecture-linked discussion (within existing discussion time)
+Relate the policy matrix to L16 service and direction control. Explain why default discard means traffic not explicitly permitted is denied, why state tracking permits established replies, and why packet filtering is not equivalent to application-proxy inspection. Identify one limitation of perimeter firewalls.
+
 ## Submission and rubric
 Topology/script, policy matrix, nftables configuration, test evidence, raw measurements and plots, report. Score: topology/routing 20; policy design 15; firewall 25; validation 20; performance 10; documentation 10. Discuss stateful vs stateless, least privilege, positive/negative tests and performance trade-offs.

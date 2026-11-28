@@ -43,5 +43,8 @@ ext python3 labs/lab02-tls-pki/measure.py --output work/tls-times.csv --samples 
 ```
 From normal shell: `python3 tools/stats.py work/tls-times.csv --group mode --value total_ms`. Repeat for handshake_ms (HTTP not applicable). Compare mean/median/SD/95% CI, quantify relative overhead `(meanHTTPS-meanHTTP)/meanHTTP*100`. Each curl process establishes independent connection; no proxy, no session reuse; discuss VM scheduling and confidence interval assumptions. Plot results, not hypothetical values.
 
+## Lecture-linked trust comparison (within final discussion)
+Compare TLS CA/hostname validation with SSH host-key verification and trust on first use (TOFU). Explain the first-connection risk of TOFU and the role of independently verified fingerprints. Compare full TLS 1.3 handshakes with PSK resumption conceptually; distinguish ordinary 1-RTT resumption from optional 0-RTT. Identify the role of AEAD and ECDHE in the observed handshake. Include concise answers in the existing report; SSH deployment is not required.
+
 ## Submission and rubric
 Public CA/server certificates, Nginx config, annotated PCAP, validation matrix, raw timing/plots, report. Score: PKI 25; HTTPS 20; TLS analysis 20; validation 15; performance 10; reproducibility 10. Discuss trust anchor, hostname checks, metadata visibility and latency trade-offs.
